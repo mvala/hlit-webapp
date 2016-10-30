@@ -1,0 +1,15 @@
+<div class="alert alert-info" role="alert" *ngIf="loading">Loading ...</div>
+<div class="alert alert-danger" role="alert" *ngIf="error">{{ error }}</div>
+
+<form class="form-signin" *ngIf="!isLoggedIn()">
+	<h2 class="form-signin-heading">Please sign in</h2>
+	<label for="username" class="sr-only">Username</label>
+	<div class="input-group">
+		<input type="text" name="username" #username class="form-control" placeholder="username" required autofocus>
+		<!--'HYBRILIT.JINR.RU' will be taken from socketio-->
+		<span class="input-group-addon" id="basic-addon2">@HYBRILIT.JINR.RU</span>
+	</div>
+	<label for="password" class="sr-only">Password</label>
+	<input type="password" name="password" #password class="form-control" placeholder="Password" required>
+	<button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login(username.value, password.value)">Sign in</button>
+</form>

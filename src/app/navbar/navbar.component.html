@@ -1,0 +1,19 @@
+<nav class="navbar navbar-dark bg-primary bg-faded">
+	<button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+		aria-expanded="false" aria-label="Toggle navigation"></button>
+	<div class="collapse navbar-toggleable-md" id="navbarResponsive">
+		<a class="navbar-brand" [routerLink]="['/home']">HybriLit <span class="tag tag-primary tag-inverse">(Users: {{api_info.user_count}})</span></a>
+		<ul class="nav navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['active']">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['/about']" [routerLinkActive]="['active']" *ngIf="authLdapService.isLoggedIn()">About</a>
+			</li>
+			<li class="nav-item  float-xs-right">
+				<a class="nav-link active" [routerLink]="['/login']" *ngIf="!authLdapService.isLoggedIn()">Login</a>
+				<a class="nav-link active" [routerLink]="['/home']" (click)="authLdapService.logout()" *ngIf="authLdapService.isLoggedIn()">Logout</a>
+			</li>
+		</ul>
+	</div>
+</nav>
